@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { Route, Routes} from "react-router-dom";
+import Layout from "./pages/Layout";
+import LoginPage from "./pages/LoginPage";
+import IndexPage from "./pages/IndexPage";
+import RegisterPage from "./pages/RegisterPage";
+import axios from "axios";
+import { UserContextProvider } from "./utils/UserContext";
+import ProfilePage from "./pages/ProfilePage";
+import BookingsPage from "./pages/BookingsPage";
+import PlacesPage from "./pages/PlacesPage";
+import PlacesFormPage from './pages/PlacesFormPage';
+import PlacePage from './pages/PlacePage';
+import BookingPage from './pages/BookingPage';
 
+//!url for backend url
+axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.withCredentials = true;
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <UserContextProvider>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<IndexPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/account" element={<ProfilePage />} />
+          <Route path="/account/places" element={<PlacesPage />} />
+          <Route path="/account/places/new" element={<PlacesFormPage />} />
+          <Route path="/account/places/:id" element={<PlacesFormPage />} />
+          <Route path="/place/:id" element={<PlacePage />} />
+          <Route path="/account/bookings" element={<BookingsPage />} />
+          <Route path="/account/bookings/:id" element={<BookingPage />} />
+        </Route>
+      </Routes>
+    </UserContextProvider>
+  );
 }
 
-export default App
+export default App;
