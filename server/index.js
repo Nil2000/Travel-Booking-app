@@ -23,7 +23,7 @@ function getUserDataFromReq(req) {
     });
   });
 }
-// @Crossorigin
+@Crossorigin
 app.use(
   cors({
     credentials: true,
