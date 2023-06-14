@@ -27,7 +27,8 @@ function getUserDataFromReq(req) {
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:5173",
+    // origin: "http://localhost:5173",
+    origin: process.env.CLIENT_URL.toString(),
   })
 );
 const port = 5000;
