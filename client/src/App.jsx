@@ -13,8 +13,9 @@ import PlacesFormPage from './pages/PlacesFormPage';
 import PlacePage from './pages/PlacePage';
 import BookingPage from './pages/BookingPage';
 
-//!url for backend url
-axios.defaults.baseURL = "http://localhost:5000";
+//!url for backend
+// axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://travel-booking-app-psi.vercel.app/";
 axios.defaults.withCredentials = true;
 function App() {
   return (
