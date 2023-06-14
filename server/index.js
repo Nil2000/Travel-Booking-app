@@ -37,6 +37,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
+app.get("/",(req,res)=>{
+  res.json({message:"Server running"})
+})
+
 app.post("/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
