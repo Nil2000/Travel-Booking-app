@@ -23,12 +23,11 @@ function getUserDataFromReq(req) {
     });
   });
 }
-@Crossorigin
 app.use(
   cors({
-    credentials: true,
+    // credentials: true,
     // origin: "http://localhost:5173",
-    origin: process.env.CLIENT_URL,
+    // origin: process.env.CLIENT_URL,
   })
 );
 const port = 5000;
